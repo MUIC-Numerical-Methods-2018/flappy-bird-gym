@@ -23,7 +23,7 @@
 """ Implementation of a Flappy Bird OpenAI Gym environment that yields simple
 numerical information about the game's state as observations.
 """
-
+import random
 from typing import Dict, Tuple, Optional, Union
 
 import gym
@@ -153,6 +153,9 @@ class FlappyBirdEnvSimple(gym.Env):
             self._renderer.game = self._game
 
         return self._get_observation()
+
+    def seed(self, seed=None):
+        random.seed(seed)
 
     def render(self, mode='human') -> None:
         """ Renders the next frame. """
